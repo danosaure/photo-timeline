@@ -1,0 +1,35 @@
+{
+  "name": "photo-timeline",
+  "version": "1.0.0",
+  "description": "Basic script to handle renaming of photo from camera and phone",
+  "main": "sort-files.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danosaure/photo-timeline.git"
+  },
+  "engines": {
+    "node": ">=8.12.0"
+  },
+  "keywords": [
+    "photo",
+    "exif",
+    "timeline"
+  ],
+  "author": {
+    "name": "Hữu Ðà Trần",
+    "email": "huuda.tran@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danosaure/photo-timeline/issues"
+  },
+  "homepage": "https://github.com/danosaure/photo-timeline#readme",
+  "dependencies": {
+    "bluebird": "~3.5.3",
+    "debug": "~4.1.0",
+    "fast-exif": "~1.0.1"
+  }
+}
