@@ -4,6 +4,7 @@
   "description": "Basic script to handle renaming of photo from camera and phone",
   "main": "sort-files.js",
   "scripts": {
+    "start": "DEBUG=danosaure:* node sort-files.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "fast-exif": "~1.0.1",
     "file-type": "~10.6.0",
     "lokijs": "~1.5.5",
+    "md5-file": "^4.0.0",
     "read-chunk": "~3.0.0"
   }
 }
