@@ -1,8 +1,8 @@
-const debug = require('debug')('danosaure:photo-timeline');
+const debug = require('./lib/debug')('sort-files');
 const constants = require('./lib/constants');
 const processFolder = require('./lib/process-folder');
 const Persistence = require('./lib/persistence');
+const args = require('./lib/args');
 
-
-const db = new Persistence(constants.SORTED_ROOT_FOLDER);
-processFolder(constants.UNSORTED_ROOT_FOLDER);
+const db = new Persistence(args.dest);
+processFolder(args.source, args.dest, args.limit);
