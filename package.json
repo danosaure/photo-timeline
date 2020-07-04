@@ -30,14 +30,14 @@
   "homepage": "https://github.com/danosaure/photo-timeline#readme",
   "dependencies": {
     "argparse": "~1.0.10",
-    "bluebird": "~3.5.3",
+    "bluebird": "~3.7.2",
     "debug": "~4.1.0",
     "dist-exiftool": "^10.53.0",
     "exif": "^0.6.0",
     "fast-exif": "~1.0.1",
-    "file-type": "~10.7.0",
-    "lokijs": "~1.5.5",
-    "md5-file": "~4.0.0",
-    "read-chunk": "~3.0.0"
+    "file-type": "~14.6.2",
+    "lokijs": "~1.5.9",
+    "md5-file": "~5.0.0",
+    "read-chunk": "~3.2.0"
   }
 }
