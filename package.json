@@ -32,6 +32,8 @@
     "argparse": "~1.0.10",
     "bluebird": "~3.5.3",
     "debug": "~4.1.0",
+    "dist-exiftool": "^10.53.0",
+    "exif": "^0.6.0",
     "fast-exif": "~1.0.1",
     "file-type": "~10.7.0",
     "lokijs": "~1.5.5",
