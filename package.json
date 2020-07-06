@@ -1,11 +1,15 @@
 {
-  "name": "photo-timeline",
+  "name": "@danosaure/photo-timeline",
   "version": "1.0.0",
   "description": "Basic script to handle renaming of photo from camera and phone",
   "main": "sort-files.js",
   "scripts": {
-    "start": "DEBUG=danosaure:* node sort-files.js --limit=25 --source=TO-SORT",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf build",
+    "prebuild": "run-s clean eslint",
+    "build": "babel --out-dir=build --ignore \"src/**/*.test.js\" src",
+    "eslint": "eslint --fix \"src/**/*.js\"",
+    "start": "node build/index.js",
+    "test": "mocha \"src/**/*.unit.test.js\""
   },
   "repository": {
     "type": "git",
@@ -30,6 +34,7 @@
   "homepage": "https://github.com/danosaure/photo-timeline#readme",
   "dependencies": {
     "argparse": "~1.0.10",
+    "babel-regenerator-runtime": "^6.5.0",
     "bluebird": "~3.7.2",
     "debug": "~4.1.0",
     "dist-exiftool": "^10.53.0",
@@ -39,5 +44,20 @@
     "lokijs": "~1.5.9",
     "md5-file": "~5.0.0",
     "read-chunk": "~3.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/register": "^7.10.4",
+    "chai": "^4.2.0",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "mocha": "^8.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "source-map-support": "^0.5.19"
   }
 }
