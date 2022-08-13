@@ -28,6 +28,7 @@ export default async (filePath, ext) => {
       date: new Date(exifDateTime),
     }];
   } catch (err) {
+    /* eslint-disable-next-line no-console */
     console.error(`Error processing filePath='${filePath}': err=`, err);
     throw err;
   }
