@@ -1,4 +1,4 @@
-export default (filePath) => {
+export default (filePath:string) => {
   if (typeof filePath !== 'string') {
     throw new Error(`Expect string but got ${typeof filePath}.`);
   }

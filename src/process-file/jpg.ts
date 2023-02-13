@@ -10,7 +10,7 @@ import _debug from './debug';
 
 const debug = _debug(__filename);
 
-export default async (filePath, ext) => {
+export default async (filePath:string, ext:string) => {
   debug(`(filePath='${filePath}')`);
 
   try {
