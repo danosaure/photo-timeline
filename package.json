@@ -6,10 +6,10 @@
   "scripts": {
     "clean": "rimraf build",
     "prebuild": "run-s clean eslint",
-    "build": "babel --out-dir=build --ignore \"src/**/*.test.js\" src",
-    "eslint": "eslint --fix \"src/**/*.js\"",
+    "build": "tsc",
+    "eslint": "eslint --fix \"src/**/*.ts\"",
     "start": "node build/index.js",
-    "test": "mocha \"src/**/*.unit.test.js\"",
+    "test": "mocha \"src/**/*.unit.test.ts\"",
     "check": "npm run eslint",
     "coverage": "nyc npm test",
     "precoverage": "npm run check",
@@ -54,6 +54,14 @@
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "@babel/register": "^7.18.9",
+    "@types/bluebird": "^3.5.38",
+    "@types/chai": "^4.3.4",
+    "@types/debug": "^4.1.7",
+    "@types/dirty-chai": "^2.0.2",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
     "chai": "^4.3.7",
     "dirty-chai": "^2.0.1",
     "eslint": "^8.33.0",
@@ -63,7 +71,8 @@
     "npm-run-all": "^4.1.5",
     "nyc": "^15.1.0",
     "rimraf": "^4.1.2",
-    "source-map-support": "^0.5.19"
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.9.5"
   },
   "nyc": {
     "all": true,

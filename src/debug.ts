@@ -3,7 +3,7 @@ import path from 'path';
 
 const DEBUG_KEY = 'danosaure:photo-timeline';
 
-const flattenInfo = (info) => {
+const flattenInfo = (info:string):string => {
   if (typeof info === 'string') {
     const filename = path.basename(info);
     const ext = path.extname(filename);
@@ -16,7 +16,7 @@ const flattenInfo = (info) => {
   return path.join(path.basename(info[0]), flattenInfo(info[1]));
 };
 
-export default (info) => {
+export default (info:string|Array<string|string[]>) => {
   const key = flattenInfo(['src', info]);
 
   const print = debug(`${DEBUG_KEY}:${key}`);

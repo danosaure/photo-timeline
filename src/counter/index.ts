@@ -1,6 +1,6 @@
 import CounterError from './error';
 
-const counter = (limit) => {
+const counter = (limit:number) => {
   let count = limit;
 
   return Object.freeze({

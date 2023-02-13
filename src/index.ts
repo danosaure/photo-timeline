@@ -20,7 +20,7 @@ const debug = _debug(__filename);
 
     await Promise.each(
       args.source,
-      async (source) => processSource(source, args.target, args.limit, args.ext),
+      async (source:string) => processSource(source, args.target, args.limit, args.ext),
     );
   } catch (err) {
     // eslint-disable-next-line no-console

@@ -9,7 +9,7 @@ import _debug from './debug';
 
 const debug = _debug(__filename);
 
-export default async (filePath, fileTypes) => {
+export default async (filePath:string, fileTypes:string) => {
   debug(`(filePath=${filePath}, fileTypes=${fileTypes})`);
   const ext = fileExtention(filePath);
   debug('ext=', ext);

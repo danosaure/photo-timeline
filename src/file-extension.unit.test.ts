@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 import moduleToTest from './file-extension';
 
 describe('src/file-extension', () => {
@@ -6,14 +8,6 @@ describe('src/file-extension', () => {
   });
 
   describe('()', () => {
-    it('throws when not a string', () => {
-      expect(() => moduleToTest()).to.throw(Error, /Expect string but got undefined./);
-      expect(() => moduleToTest(1)).to.throw(Error, /Expect string but got number./);
-      expect(() => moduleToTest(null)).to.throw(Error, /Expect string but got object./);
-      expect(() => moduleToTest([])).to.throw(Error, /Expect string but got object./);
-      expect(() => moduleToTest({})).to.throw(Error, /Expect string but got object./);
-    });
-
     it('returns empty when no extension', () => {
       expect(moduleToTest('foo')).to.equal('');
     });

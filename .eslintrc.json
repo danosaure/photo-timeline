@@ -1,7 +1,13 @@
 {
   "root": true,
   "extends": [
-    "airbnb-base"
+    "airbnb-base",
+    // "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
   ],
   "rules": {
     "max-len": ["warn", 120]

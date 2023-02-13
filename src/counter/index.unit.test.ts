@@ -1,3 +1,5 @@
+import {expect} from 'chai';
+
 import moduleToTest from './index';
 
 describe('src/counter/index', () => {

@@ -3,4 +3,4 @@ import dirtyChai from 'dirty-chai';
 
 chai.use(dirtyChai);
 
-global.expect = chai.expect;
+// globalThis.expect = chai.expect;
