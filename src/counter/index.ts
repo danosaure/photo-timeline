@@ -6,6 +6,7 @@ const counter = (limit:number) => {
   return Object.freeze({
     done: () => count === 0,
     count: () => {
+      console.log(`counter/index: (limit=${limit}). count=${count}.`);
       if (limit === -1) {
         return;
       }

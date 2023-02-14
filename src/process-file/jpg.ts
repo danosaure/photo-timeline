@@ -1,28 +1,16 @@
-import exif from 'fast-exif';
-// import path from 'path';
-
-// const counter = require('../counter');
-// const debug = require('./debug')('jpg');
-// const moveFileIfNotDuplicate = require('../move-file-if-not-duplicate');
-// const prepend0 = require('../prepend-zero');
-
-import _debug from './debug';
-
-const debug = _debug(__filename);
+import * as ExifReader from 'exifreader';
 
 export default async (filePath:string, ext:string) => {
-  debug(`(filePath='${filePath}')`);
-
+  console.log(`process-file/jpg: (filePath="${filePath}", ext="${ext}")`);
   try {
-    const exifData = await exif.read(filePath);
-    // debug(`exifData=`, exifData);
-    const exifDateTime = exifData.exif.DateTimeOriginal;
+    const exifData = await ExifReader.load(filePath);
+    const exifDateTime = exifData.DateTimeOriginal?.description;
     if (!exifDateTime) {
       throw new Error(`Cannot find exif for filePath="${filePath}".`);
     }
 
     return [{
-      id: `${exifData.image.Make}.${exifData.image.Model}`,
+      id: `${exifData.Make?.description}.${exifData.Model?.description}`,
       ext,
       filePath,
       date: new Date(exifDateTime),

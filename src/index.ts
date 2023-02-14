@@ -1,27 +1,16 @@
-import Promise from 'bluebird';
 import 'babel-regenerator-runtime';
 
 import parseArgs from './parse-args';
 import processSource from './process-source';
 
-import _debug from './debug';
-
-const debug = _debug(__filename);
-
 (async () => {
   try {
-    const args = parseArgs();
+    const args = await parseArgs();
+    console.log("index: args=", args);
 
-    if (args.debug) {
-      debug.enable();
+    if (args.source) {
+      await processSource(args.source, args.target, args.limit, args.ext);
     }
-
-    debug('args=', args);
-
-    await Promise.each(
-      args.source,
-      async (source:string) => processSource(source, args.target, args.limit, args.ext),
-    );
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);
