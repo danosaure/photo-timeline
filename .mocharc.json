@@ -5,6 +5,6 @@
   "require": [
     "@babel/register",
     "source-map-support/register",
-    "./src/setup.test.js"
+    "./src/setup.test.ts"
   ]
 }

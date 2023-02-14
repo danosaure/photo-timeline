@@ -1,5 +1,5 @@
 export default class CounterError extends Error {
-  constructor(message) {
+  constructor(message:string) {
     super(message);
     this.name = `Danosaure.PhotoTimeline.${this.constructor.name}`;
   }
