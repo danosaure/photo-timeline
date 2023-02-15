@@ -7,7 +7,7 @@ export const EXTENSION = Object.freeze({
 });
 
 export const EXTENSIONS = Object.freeze({
-  JPG: ['jpg', 'jpeg'],
+  // JPG: ['jpg', 'jpeg'],
   CR2: ['cr2'],
   MOV: ['mov'],
 });

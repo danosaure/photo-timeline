@@ -2,8 +2,11 @@ import fs from 'fs';
 
 import Config from './config';
 import counter from './counter';
+import _debug from './debug';
 import folderWalker from './folder-walker';
 import processFile from './process-file';
+
+const debug = _debug(__filename);
 
 export default async (config: Config): Promise<void> => {
   let fileCount = 0;
@@ -14,17 +17,19 @@ export default async (config: Config): Promise<void> => {
 
     // eslint-disable-next-line no-restricted-syntax
     for (const file of generator) {
-      console.log("-----", fileCount++, "-----------------------------------------------------");
+      debug("-----", fileCount++, "-----------------------------------------------------");
       // eslint-disable-next-line no-await-in-loop
-      console.log("process-source: file=", file);
+      debug("process-source: file=", file);
 
       try {
-        await processFile(config, file);
+        const exifInfo = await processFile(config, file);
+        if (exifInfo) {
           aCounter.count();
 
           if (aCounter.done()) {
             break;
           }
+        }
       } catch (err){
         console.warn(`Error with file '${file}':`, err);
       }

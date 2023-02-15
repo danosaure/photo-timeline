@@ -1,19 +1,20 @@
-import jpg from './jpg-file';
-
 import Config from '../config';
-import { EXTENSION, EXTENSIONS } from '../constants';
 import { ExifNotFoundError } from '../errors';
-import factory from './factory';
 import ExifInfo from '../exif-info';
 
-export default async (config:Config, filePath:string): Promise<void> => {
-  console.log(`process-file/index: (config, filePath="${filePath}")`);
+import _debug from './debug';
+import factory from './factory';
+
+const debug = _debug(__filename);
+
+export default async (config:Config, filePath:string): Promise<ExifInfo|null> => {
+  debug(`(config, filePath="${filePath}")`);
 
   const impl = factory(config, filePath);
   if (impl) {
     try {
       const info = await impl.load();
-      console.log(`process-file/index: info=`, info);
+      return info;
     } catch (e) {
       if (e instanceof ExifNotFoundError) {
         impl.quarantine();
@@ -22,4 +23,5 @@ export default async (config:Config, filePath:string): Promise<void> => {
       }
     }
   }
+  return null;
 };

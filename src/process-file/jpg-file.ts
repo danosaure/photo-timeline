@@ -6,7 +6,7 @@ import ExifInfo from '../exif-info';
 export default class JpgFile extends ExifFile {
   static readonly EXTENSIONS = ['jpg', 'jpeg'];
 
-  async load() {
+  async load(): Promise<ExifInfo> {
     const exifData = await exifReaderLoad(this.filePath);
     return new ExifInfo(this.filePath, exifData);
   }

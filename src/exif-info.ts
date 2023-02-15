@@ -13,11 +13,5 @@ export default class ExifInfo {
         } else {
             throw new ExifNotFoundError(filePath);
         }
-        // return [{
-        //     id: `${exifData.Make?.description}.${exifData.Model?.description}`,
-        //     ext,
-        //     filePath,
-        //     date: new Date(exifDateTime),
-        //   }];
     }
 }

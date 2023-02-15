@@ -1,5 +1,9 @@
 import ExifInfo from '../exif-info';
 
+import _debug from './debug';
+
+const debug = _debug(__filename);
+
 export default abstract class ExifFile {
     readonly filePath:string;
 
@@ -10,6 +14,6 @@ export default abstract class ExifFile {
     abstract load(): Promise<ExifInfo>;
 
     async quarantine(): Promise<void> {
-        console.log(`process-file/exif-file:     need to quarantine filePath="${this.filePath}".`)
+        debug(`process-file/exif-file:     need to quarantine filePath="${this.filePath}".`)
     }
 }

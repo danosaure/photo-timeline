@@ -1,18 +1,18 @@
 import 'babel-regenerator-runtime';
 
-import { config } from './config';
+import Config from './config';
+import { enable as enableDebug } from './debug';
 import parseArgs from './parse-args';
 import processSource from './process-source';
 
 (async (): Promise<void> => {
   try {
     const args = await parseArgs();
-    console.log("index: args=", args);
+    const config = new Config(args);
 
-      config.limit = args.limit;
-      config.quarantine = args.quarantine;
-      config.source = args.source;
-      config.target = args.target;
+    if (args.debug) {
+      enableDebug();
+    }
 
       await processSource(config);
   } catch (err) {

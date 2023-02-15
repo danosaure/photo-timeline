@@ -8,7 +8,7 @@ Before using, build the system:
 npm run build
 ```
 
-To get help:
+To run:
 ```
 npm start -- --ext=jpg --target=/some/destination/folder \
     --source=/some/folder --limit=30 --quarantine=/some/quarantine/folder
@@ -29,3 +29,5 @@ The management of conflicted file names is still undefined.
 
 If a file does not contain EXIF data, the file will be moved under the
 quarantine folder. The original file structure would be kept.
+
+You can add `--debug` to show debugging messages.
