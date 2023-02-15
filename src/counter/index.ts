@@ -1,4 +1,8 @@
-import CounterError from './error';
+import { CounterError } from '../errors';
+
+import _debug from './debug';
+
+const debug = _debug(__filename);
 
 const counter = (limit:number) => {
   let count = limit;
@@ -6,7 +10,7 @@ const counter = (limit:number) => {
   return Object.freeze({
     done: () => count === 0,
     count: () => {
-      console.log(`counter/index: (limit=${limit}). count=${count}.`);
+      debug(`(limit=${limit}). count=${count}.`);
       if (limit === -1) {
         return;
       }

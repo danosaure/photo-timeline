@@ -1,13 +1,3 @@
-export default (filePath:string) => {
-  if (typeof filePath !== 'string') {
-    throw new Error(`Expect string but got ${typeof filePath}.`);
-  }
+import path from 'path';
 
-  const extIndex = filePath.lastIndexOf('.');
-
-  if (extIndex === -1) {
-    return '';
-  }
-
-  return filePath.slice(extIndex + 1).toLowerCase();
-};
+export default (filePath:string): string => path.extname(filePath).toLowerCase().slice(1);
