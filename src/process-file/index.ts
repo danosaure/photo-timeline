@@ -1,20 +1,25 @@
-import jpg from './jpg';
+import jpg from './jpg-file';
 
+import Config from '../config';
 import { EXTENSION, EXTENSIONS } from '../constants';
-import fileExtention from '../file-extension';
+import { ExifNotFoundError } from '../errors';
+import factory from './factory';
+import ExifInfo from '../exif-info';
 
-export default async (filePath:string, fileTypes:string) => {
-  console.log(`process-file/index: (filePath="${filePath}", fileTypes="${fileTypes}")`);
-  const ext = fileExtention(filePath);
+export default async (config:Config, filePath:string): Promise<void> => {
+  console.log(`process-file/index: (config, filePath="${filePath}")`);
 
-  let info = null;
-  if (fileTypes.includes(EXTENSION.JPG) && EXTENSIONS.JPG.includes(ext)) {
+  const impl = factory(config, filePath);
+  if (impl) {
     try {
-      info = await jpg(filePath, EXTENSION.JPG);
-    } catch {
-      console.log(`process-file/index:     need to quarantine filePath="${filePath}".`)
+      const info = await impl.load();
+      console.log(`process-file/index: info=`, info);
+    } catch (e) {
+      if (e instanceof ExifNotFoundError) {
+        impl.quarantine();
+      } else {
+        console.error("Generic error:", e);
+      }
     }
   }
-  console.log(`process-file/index: info=`, info);
-  return info;
 };

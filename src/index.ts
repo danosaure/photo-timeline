@@ -1,16 +1,20 @@
 import 'babel-regenerator-runtime';
 
+import { config } from './config';
 import parseArgs from './parse-args';
 import processSource from './process-source';
 
-(async () => {
+(async (): Promise<void> => {
   try {
     const args = await parseArgs();
     console.log("index: args=", args);
 
-    if (args.source) {
-      await processSource(args.source, args.target, args.limit, args.ext);
-    }
+      config.limit = args.limit;
+      config.quarantine = args.quarantine;
+      config.source = args.source;
+      config.target = args.target;
+
+      await processSource(config);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);

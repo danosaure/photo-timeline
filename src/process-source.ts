@@ -1,16 +1,16 @@
 import fs from 'fs';
 
+import Config from './config';
 import counter from './counter';
 import folderWalker from './folder-walker';
 import processFile from './process-file';
 
-export default async (source:string, dest:string, limit:number, extensions:string) => {
+export default async (config: Config): Promise<void> => {
   let fileCount = 0;
   
-  console.log(`process-source: (source="${source}", dest="${dest}", limit=${limit}, extensions="${extensions}")`);
-  if (fs.existsSync(source)) {
-    const aCounter = counter(limit);
-    const generator = folderWalker(source);
+  if (fs.existsSync(config.source as string)) {
+    const aCounter = counter(config.limit as number);
+    const generator = folderWalker(config.source as string);
 
     // eslint-disable-next-line no-restricted-syntax
     for (const file of generator) {
@@ -18,22 +18,19 @@ export default async (source:string, dest:string, limit:number, extensions:strin
       // eslint-disable-next-line no-await-in-loop
       console.log("process-source: file=", file);
 
-      const fileInfo = await processFile(file, extensions);
-        if (fileInfo) {
-
-
-
+      try {
+        await processFile(config, file);
           aCounter.count();
 
           if (aCounter.done()) {
             break;
           }
-        } else {
-          console.warn(`Ignoring file '${file}'.`);
-        }
+      } catch (err){
+        console.warn(`Error with file '${file}':`, err);
+      }
     }
   } else {
     // eslint-disable-next-line no-console
-    console.error(`Cannot find '${source}'. Ignoring...`);
+    console.error(`Cannot find '${config.source}'. Ignoring...`);
   }
 };

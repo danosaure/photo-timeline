@@ -18,6 +18,12 @@ export default async () => yargs(hideBin(process.argv))
       demandOption: true,
       description: 'List of extensions to process',
     },
+    quarantine: {
+      alias: 'q',
+      type: 'string',
+      description: 'Quarantine folder for files without EXIF data.',
+      demandOption: true,
+    },
     source: {
       alias: 's',
       type: 'string',
