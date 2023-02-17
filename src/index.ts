@@ -14,7 +14,7 @@ import processSource from './process-source';
       enableDebug();
     }
 
-      await processSource(config);
+    await processSource(config);
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);

@@ -1,7 +1,6 @@
 {
   "root": true,
   "extends": [
-    // "airbnb-base",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
@@ -9,10 +8,12 @@
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "rules": {
-    "max-len": ["warn", 120]
+    "max-len": ["warn", 120],
+    "prettier/prettier": "error"
   },
   "overrides": [{
     "files": ["*.test.js"],

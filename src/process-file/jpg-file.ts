@@ -10,7 +10,6 @@ export default class JpgFile extends ExifFile {
     const exifData = await exifReaderLoad(this.filePath);
     return new ExifInfo(this.filePath, exifData);
   }
-
 }
 
 // export default async (filePath:string): Promise<ExifInfo> => {

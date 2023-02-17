@@ -4,7 +4,7 @@ import _debug from './debug';
 
 const debug = _debug(__filename);
 
-const counter = (limit:number) => {
+const counter = (limit: number) => {
   let count = limit;
 
   return Object.freeze({

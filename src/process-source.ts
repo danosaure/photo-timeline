@@ -10,16 +10,16 @@ const debug = _debug(__filename);
 
 export default async (config: Config): Promise<void> => {
   let fileCount = 0;
-  
+
   if (fs.existsSync(config.source as string)) {
     const aCounter = counter(config.limit as number);
     const generator = folderWalker(config.source as string);
 
     // eslint-disable-next-line no-restricted-syntax
     for (const file of generator) {
-      debug("-----", fileCount++, "-----------------------------------------------------");
+      debug('-----', fileCount++, '-----------------------------------------------------');
       // eslint-disable-next-line no-await-in-loop
-      debug("process-source: file=", file);
+      debug('process-source: file=', file);
 
       try {
         const exifInfo = await processFile(config, file);
@@ -30,7 +30,7 @@ export default async (config: Config): Promise<void> => {
             break;
           }
         }
-      } catch (err){
+      } catch (err) {
         console.warn(`Error with file '${file}':`, err);
       }
     }
