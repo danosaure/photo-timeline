@@ -3,11 +3,11 @@ import { hideBin } from 'yargs/helpers';
 
 import { DEFAULT_LIMIT, EXTENSION } from './constants';
 
-export default async () => yargs(hideBin(process.argv))
-  .options({
+export default async () =>
+  yargs(hideBin(process.argv)).options({
     debug: {
       type: 'boolean',
-      description: "Display debugging messages.",
+      description: 'Display debugging messages.',
       default: false,
     },
     limit: {
@@ -36,5 +36,4 @@ export default async () => yargs(hideBin(process.argv))
       description: 'Target folder.',
       demandOption: true,
     },
-  })
-  .argv;
+  }).argv;

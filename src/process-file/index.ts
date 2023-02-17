@@ -7,7 +7,7 @@ import factory from './factory';
 
 const debug = _debug(__filename);
 
-export default async (config:Config, filePath:string): Promise<ExifInfo|null> => {
+export default async (config: Config, filePath: string): Promise<ExifInfo | null> => {
   debug(`(config, filePath="${filePath}")`);
 
   const impl = factory(config, filePath);
@@ -19,7 +19,7 @@ export default async (config:Config, filePath:string): Promise<ExifInfo|null> =>
       if (e instanceof ExifNotFoundError) {
         impl.quarantine();
       } else {
-        console.error("Generic error:", e);
+        console.error('Generic error:', e);
       }
     }
   }

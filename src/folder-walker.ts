@@ -6,7 +6,7 @@ import _debug from './debug';
 
 const debug = _debug(__filename);
 
-function* walker(item:string):IterableIterator<string> {
+function* walker(item: string): IterableIterator<string> {
   debug('item=', item);
   const stats = fs.statSync(item);
   if (stats.isDirectory()) {

@@ -3,6 +3,5 @@
 
 module.exports = async (/* filePath, destFolder, ext, limit */) => {
   // const d = await exifDate(filePath);
-
   // debug('d=', d);
 };

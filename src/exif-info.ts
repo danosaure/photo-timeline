@@ -3,15 +3,15 @@ import { Tags as ExifReaderTags } from 'exifreader';
 import { ExifNotFoundError } from './errors';
 
 export default class ExifInfo {
-    readonly exifData: ExifReaderTags;
-    readonly filePath: string;
+  readonly exifData: ExifReaderTags;
+  readonly filePath: string;
 
-    constructor(filePath:string, exifData: ExifReaderTags) {
-        if (exifData.DateTimeOriginal?.description) {
-            this.filePath = filePath;
-        this.exifData = exifData;
-        } else {
-            throw new ExifNotFoundError(filePath);
-        }
+  constructor(filePath: string, exifData: ExifReaderTags) {
+    if (exifData.DateTimeOriginal?.description) {
+      this.filePath = filePath;
+      this.exifData = exifData;
+    } else {
+      throw new ExifNotFoundError(filePath);
     }
+  }
 }
