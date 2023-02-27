@@ -22,13 +22,11 @@ export default async (config: Config): Promise<void> => {
       debug('process-source: file=', file);
 
       try {
-        const exifInfo = await processFile(config, file);
-        if (exifInfo) {
-          aCounter.count();
+        await processFile(config, file);
+        aCounter.count();
 
-          if (aCounter.done()) {
-            break;
-          }
+        if (aCounter.done()) {
+          break;
         }
       } catch (err) {
         console.warn(`Error with file '${file}':`, err);
